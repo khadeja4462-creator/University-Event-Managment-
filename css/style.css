@@ -337,3 +337,51 @@ input[type="date"] {
     padding: 25px;
   }
 }
+
+/* ================= EVENT DETAILS ================= */
+
+.event-details-image {
+  height: 400px;
+  object-fit: cover;
+  background-color: var(--cream);
+}
+
+.event-info-card {
+  border-radius: 16px;
+}
+
+.event-info-card h4 {
+  color: var(--orange-dark);
+}
+
+.event-info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.event-info-item i {
+  font-size: 1.3rem;
+  color: var(--orange);
+}
+
+.event-info-item strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.event-info-item p {
+  color: #777;
+  margin: 0;
+}
+
+.event-schedule li {
+  margin-bottom: 10px;
+}
+
+@media (max-width: 767px) {
+  .event-details-image {
+    height: 250px;
+  }
+}

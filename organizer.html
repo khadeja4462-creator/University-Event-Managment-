@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Organizer Dashboard | University Events</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <!-- Flatpickr (date and time pickers that always display in English) -->
+    <link href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+   <!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg bg-white shadow-sm py-3">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+            <i class="bi bi-calendar-event logo-icon"></i>
+            <span class="fw-bold text-orange fs-5">University Event Management</span>
+        </a>
+
+        <ul class="navbar-nav flex-row flex-wrap ms-auto align-items-center gap-3">
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">Home</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="events.html">Events</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link active" href="organizer.html">Organizer</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="about.html">About</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="btn btn-orange px-4" href="login.html">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+    <!-- DASHBOARD -->
+    <div class="admin-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+
+                <!-- SIDEBAR -->
+                <aside class="col-lg-3 col-xl-2 admin-sidebar">
+                    <h5 class="fw-bold px-2">Organizer Panel</h5>
+                    <p class="small text-muted px-2">Manage your university events</p>
+
+                    <nav class="nav flex-column">
+                        <a class="nav-link active" href="#overview"><i class="bi bi-grid"></i>Overview</a>
+                        <a class="nav-link" href="#my-events"><i class="bi bi-calendar-event"></i>My Events</a>
+                        <a class="nav-link" href="#create-event"><i class="bi bi-plus-circle"></i>Create Event</a>
+                        <a class="nav-link" href="#participants"><i class="bi bi-people"></i>Participants</a>
+                    </nav>
+                </aside>
+
+
+                <!-- MAIN CONTENT -->
+                <main class="col-lg-9 col-xl-10 p-4">
+
+                    <!-- OVERVIEW -->
+                    <section id="overview" class="mb-4">
+
+                        <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+                            <div>
+                                <h2 class="fw-bold mb-1">Organizer Dashboard</h2>
+                                <p class="text-muted mb-0">Manage your events and participants.</p>
+                            </div>
+
+                            <a href="#create-event" class="btn btn-orange">
+                                <i class="bi bi-plus-lg me-1"></i> Create New Event
+                            </a>
+                        </div>
+
+                        <div class="row g-3">
+
+                            <div class="col-sm-6 col-xl-3">
+                                <div class="card stat-card h-100">
+                                    <div class="card-body d-flex align-items-center gap-3">
+                                        <div class="stat-icon"><i class="bi bi-calendar-event"></i></div>
+                                        <div>
+                                            <p class="text-muted small mb-0">My Events</p>
+                                            <h3 class="fw-bold mb-0">3</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-xl-3">
+                                <div class="card stat-card h-100">
+                                    <div class="card-body d-flex align-items-center gap-3">
+                                        <div class="stat-icon"><i class="bi bi-check-circle"></i></div>
+                                        <div>
+                                            <p class="text-muted small mb-0">Approved Events</p>
+                                            <h3 class="fw-bold mb-0">1</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-xl-3">
+                                <div class="card stat-card h-100">
+                                    <div class="card-body d-flex align-items-center gap-3">
+                                        <div class="stat-icon"><i class="bi bi-hourglass-split"></i></div>
+                                        <div>
+                                            <p class="text-muted small mb-0">Pending Events</p>
+                                            <h3 class="fw-bold mb-0">1</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-xl-3">
+                                <div class="card stat-card h-100">
+                                    <div class="card-body d-flex align-items-center gap-3">
+                                        <div class="stat-icon"><i class="bi bi-people"></i></div>
+                                        <div>
+                                            <p class="text-muted small mb-0">Total Participants</p>
+                                            <h3 class="fw-bold mb-0">40</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </section>
+
+
+                    <!-- MY EVENTS -->
+                    <section id="my-events" class="card admin-card mb-4">
+                        <div class="card-header">My Events</div>
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table align-middle mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Event Name</th>
+                                            <th>Date</th>
+                                            <th>Hall</th>
+                                            <th>Status</th>
+                                            <th>Participants</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Robotics Competition</td>
+                                            <td>18 Nov 2026</td>
+                                            <td>Engineering Hall</td>
+                                            <td><span class="badge bg-success">Approved</span></td>
+                                            <td>40</td>
+                                        </tr>
+                                        <tr>
+                                            <td>AI Workshop</td>
+                                            <td>22 Nov 2026</td>
+                                            <td>Conference Room</td>
+                                            <td><span class="badge bg-warning text-dark">Pending</span></td>
+                                            <td>&mdash;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Technology Seminar</td>
+                                            <td>01 Dec 2026</td>
+                                            <td>Garden</td>
+                                            <td><span class="badge bg-danger">Rejected</span></td>
+                                            <td>&mdash;</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </section>
+
+
+                    <!-- CREATE EVENT -->
+                    <section id="create-event" class="card admin-card mb-4">
+                        <div class="card-header">Submit a New Event</div>
+                        <div class="card-body p-4">
+
+                            <div class="alert alert-success d-none" id="submitAlert" role="alert">
+                                <i class="bi bi-check-circle me-1"></i>
+                                Your event was submitted for approval.
+                            </div>
+
+                            <form id="eventForm" action="#" method="post">
+                                <div class="row g-3">
+
+                                    <div class="col-md-6">
+                                        <label for="eventName" class="form-label">Event Name</label>
+                                        <input id="eventName" name="eventName" class="form-control" type="text"
+                                            placeholder="Enter event name" required>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="category" class="form-label">Category</label>
+                                        <select id="category" name="category" class="form-select" required>
+                                            <option value="">Choose category</option>
+                                            <option value="Workshop">Workshop</option>
+                                            <option value="Competition">Competition</option>
+                                            <option value="Seminar">Seminar</option>
+                                            <option value="Ceremony">Ceremony</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="eventDate" class="form-label">Date</label>
+                                        <input id="eventDate" name="eventDate" class="form-control" type="text"
+                                            placeholder="dd/mm/yyyy" autocomplete="off" required>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="eventTime" class="form-label">Time</label>
+                                        <input id="eventTime" name="eventTime" class="form-control" type="text"
+                                            placeholder="hh:mm AM/PM" autocomplete="off" required>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="hall" class="form-label">Hall</label>
+                                        <select id="hall" name="hall" class="form-select" required>
+                                            <option value="">Choose an available hall</option>
+                                            <option>Main Hall</option>
+                                            <option>Engineering Hall</option>
+                                            <option>Garden</option>
+                                            <option>Conference Room</option>
+                                            <option>Arts Room</option>
+                                            <option>Lab 2</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="seats" class="form-label">Number of Seats</label>
+                                        <input id="seats" name="seats" class="form-control" type="number" min="1"
+                                            placeholder="Enter number of seats" required>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label for="audience" class="form-label">Audience</label>
+                                        <select id="audience" name="audience" class="form-select" required>
+                                            <option value="">Choose audience</option>
+                                            <option value="everyone">Open to Everyone</option>
+                                            <option value="students">Students Only</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label for="description" class="form-label">Description</label>
+                                        <textarea id="description" name="description" class="form-control" rows="4"
+                                            placeholder="Write a short description" required></textarea>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-orange">Submit for Approval</button>
+                                    </div>
+
+                                </div>
+                            </form>
+
+                            <p class="small text-muted mt-3 mb-0">
+                                Note: This is a front-end demo form. Submitting and saving events requires backend functionality.
+                            </p>
+                        </div>
+                    </section>
+
+
+                    <!-- PARTICIPANTS -->
+                    <section id="participants" class="card admin-card">
+                        <div class="card-header">Recent Participants</div>
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table align-middle mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Student Name</th>
+                                            <th>Student ID</th>
+                                            <th>Event</th>
+                                            <th>Registration Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Ahmed Ali</td>
+                                            <td>20241025</td>
+                                            <td>Robotics Competition</td>
+                                            <td>28 Oct 2026</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Maryam Omar</td>
+                                            <td>20241108</td>
+                                            <td>Robotics Competition</td>
+                                            <td>29 Oct 2026</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Salem Khalifa</td>
+                                            <td>20240931</td>
+                                            <td>Robotics Competition</td>
+                                            <td>30 Oct 2026</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </section>
+
+                </main>
+            </div>
+        </div>
+    </div>
+
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-md-4">
+          <h5 class="fw-bold"><i class="bi bi-calendar-event"></i> University Event Management</h5>
+          <p class="mb-0">Discover, join and organize events across the university.</p>
+        </div>
+        <div class="col-md-4">
+          <h6 class="fw-bold">Quick Links</h6>
+          <ul class="list-unstyled">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="events.html">Events</a></li>
+            
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h6 class="fw-bold">Follow Us</h6>
+          <div class="social">
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-instagram"></i></a>
+            <a href="#"><i class="bi bi-twitter-x"></i></a>
+            <a href="#"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+      <hr class="border-light opacity-50">
+      <p class="text-center mb-0 small">&copy; 2026 University Event Management. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
+
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.js"></script>
+
+    <script>
+        // Date and time pickers: English display, same look on every browser language.
+        const datePicker = flatpickr("#eventDate", {
+            dateFormat: "Y-m-d",
+            altInput: true,
+            altFormat: "d/m/Y",
+            altInputClass: "form-control",
+            minDate: "today",
+            disableMobile: true
+        });
+
+        const timePicker = flatpickr("#eventTime", {
+            enableTime: true,
+            noCalendar: true,
+            dateFormat: "H:i",
+            altInput: true,
+            altFormat: "h:i K",
+            altInputClass: "form-control",
+            disableMobile: true
+        });
+
+        // Demo submit: no backend yet, so show a confirmation and clear the form.
+        document.getElementById("eventForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+            document.getElementById("submitAlert").classList.remove("d-none");
+            this.reset();
+            datePicker.clear();
+            timePicker.clear();
+            document.getElementById("submitAlert").scrollIntoView({ behavior: "smooth", block: "center" });
+        });
+    </script>
+
+</body>
+</html>
