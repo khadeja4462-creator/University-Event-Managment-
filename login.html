@@ -11,7 +11,7 @@
 </head>
 <body>
 
-  <!-- ================= HEADER ================= -->
+  <!-- ================= HEADER (visitor version: no Organizer link) ================= -->
   <nav class="navbar navbar-expand-lg bg-white shadow-sm py-3">
     <div class="container">
       <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
@@ -21,7 +21,6 @@
       <ul class="navbar-nav flex-row flex-wrap ms-auto align-items-center gap-3">
         <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
-        <li class="nav-item"><a class="nav-link" href="organizer.html">Organizer</a></li>
         <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
         <li class="nav-item"><a class="nav-link active" href="login.html">Login</a></li>
         <li class="nav-item"><a class="btn btn-orange px-4" href="register.html">Register</a></li>
@@ -29,7 +28,7 @@
     </div>
   </nav>
 
-  <!-- ================= LOGIN FORM ================= -->
+  <!-- ================= LOGIN ================= -->
   <section class="auth-section">
     <div class="container">
       <div class="row justify-content-center">
@@ -38,49 +37,70 @@
             <div class="card-body">
               <div class="auth-icon"><i class="bi bi-person-lock"></i></div>
               <h2 class="text-center fw-bold mb-1">Welcome Back</h2>
-              <p class="text-center text-muted mb-4">Log in to your account</p>
+              <p class="text-center text-muted mb-4">Choose your account type and log in</p>
 
               <!--
-                HTML-only checking (no JavaScript):
-                - required  : shows "Please fill out this field" if empty
-                - pattern   : the only value that is accepted
-                - title     : the message the browser shows when the value is wrong
-                Demo account:  admin@university.edu  /  admin123
+                Two tabs made with CSS only (no JavaScript):
+                the hidden radio buttons decide which form is shown.
               -->
-              <form action="admin.html" method="get">
+              <input type="radio" name="role-tab" id="tab-student" class="role-radio" checked>
+              <input type="radio" name="role-tab" id="tab-admin" class="role-radio">
+
+              <div class="role-tabs mb-4">
+                <label for="tab-student" class="role-tab"><i class="bi bi-mortarboard"></i> Student</label>
+                <label for="tab-admin" class="role-tab"><i class="bi bi-shield-lock"></i> Admin</label>
+              </div>
+
+              <!-- ===== STUDENT LOGIN → home page (no Organizer access) =====
+                   Demo account: student@university.edu / student123 -->
+              <form class="role-form student-form" action="index.html" method="get">
                 <div class="mb-3">
-                  <label for="email" class="form-label">Email</label>
+                  <label for="student-email" class="form-label">Student Email</label>
                   <div class="input-group">
                     <span class="input-group-text"><i class="bi bi-envelope"></i></span>
-                    <input type="email" class="form-control" id="email" name="email"
-                           placeholder="you@university.edu"
-                           required
-                           pattern="admin@university\.edu"
-                           title="No account found with this email.">
+                    <input type="email" class="form-control" id="student-email" name="email"
+                           placeholder="you@university.edu" required
+                           pattern="student@university\.edu"
+                           title="No student account found with this email.">
                   </div>
                 </div>
-
-                <div class="mb-3">
-                  <label for="password" class="form-label">Password</label>
+                <div class="mb-4">
+                  <label for="student-password" class="form-label">Password</label>
                   <div class="input-group">
                     <span class="input-group-text"><i class="bi bi-lock"></i></span>
-                    <input type="password" class="form-control" id="password" name="password"
-                           placeholder="Your password"
-                           required
+                    <input type="password" class="form-control" id="student-password" name="password"
+                           placeholder="Your password" required
+                           pattern="student123"
+                           title="Incorrect password.">
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-orange w-100 py-2 fw-semibold">Login as Student</button>
+              </form>
+
+              <!-- ===== ADMIN LOGIN → admin dashboard (has Organizer access) =====
+                   Demo account: admin@university.edu / admin123 -->
+              <form class="role-form admin-form" action="admin.html" method="get">
+                <div class="mb-3">
+                  <label for="admin-email" class="form-label">Admin Email</label>
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                    <input type="email" class="form-control" id="admin-email" name="email"
+                           placeholder="admin@university.edu" required
+                           pattern="admin@university\.edu"
+                           title="No admin account found with this email.">
+                  </div>
+                </div>
+                <div class="mb-4">
+                  <label for="admin-password" class="form-label">Password</label>
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                    <input type="password" class="form-control" id="admin-password" name="password"
+                           placeholder="Your password" required
                            pattern="admin123"
                            title="Incorrect password.">
                   </div>
                 </div>
-
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="remember">
-                    <label class="form-check-label" for="remember">Remember me</label>
-                  </div>
-                  <a href="#" class="auth-link small">Forgot password?</a>
-                </div>
-
-                <button type="submit" class="btn btn-orange w-100 py-2 fw-semibold">Login</button>
+                <button type="submit" class="btn btn-orange w-100 py-2 fw-semibold">Login as Admin</button>
               </form>
 
               <p class="text-center mt-4 mb-0">
@@ -93,7 +113,7 @@
     </div>
   </section>
 
-  <!-- ================= FOOTER ================= -->
+  <!-- ================= FOOTER (visitor version: no Organizer link) ================= -->
   <footer class="footer">
     <div class="container">
       <div class="row gy-4">
@@ -106,8 +126,8 @@
           <ul class="list-unstyled">
             <li><a href="index.html">Home</a></li>
             <li><a href="events.html">Events</a></li>
-            
             <li><a href="about.html">About</a></li>
+            <li><a href="login.html">Login</a></li>
           </ul>
         </div>
         <div class="col-md-4">

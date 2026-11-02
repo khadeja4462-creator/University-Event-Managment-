@@ -189,6 +189,45 @@ input[type="date"] {
   text-decoration: underline;
 }
 
+/* ================= LOGIN ROLE TABS (CSS only) ================= */
+.role-radio {
+  display: none;
+}
+
+.role-tabs {
+  display: flex;
+  background-color: var(--cream);
+  border-radius: 10px;
+  padding: 5px;
+  gap: 5px;
+}
+
+.role-tab {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  color: var(--dark);
+  cursor: pointer;
+}
+
+.role-form {
+  display: none;
+}
+
+/* Student tab chosen */
+#tab-student:checked ~ .role-tabs label[for="tab-student"],
+#tab-admin:checked ~ .role-tabs label[for="tab-admin"] {
+  background-color: var(--orange);
+  color: #fff;
+}
+
+#tab-student:checked ~ .student-form,
+#tab-admin:checked ~ .admin-form {
+  display: block;
+}
+
 /* ================= ADMIN DASHBOARD ================= */
 .admin-wrapper {
   background-color: var(--cream);
@@ -265,6 +304,7 @@ input[type="date"] {
   background-color: var(--orange);
   color: #fff;
 }
+
 /* ================= EVENT CARDS ================= */
 .event-card {
   border: none;
@@ -283,6 +323,7 @@ input[type="date"] {
   object-fit: cover;
   background-color: var(--orange-light);
 }
+
 /* ================= ABOUT PAGE ================= */
 .page-banner {
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
