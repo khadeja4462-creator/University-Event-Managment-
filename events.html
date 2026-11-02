@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+
+<html lang="en-GB">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Events | University Events</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <!-- Flatpickr (date picker that always displays in English) -->
+    <link href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
+        <div class="container">
+
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <i class="bi bi-mortarboard-fill logo-icon"></i>
+                <span class="ms-2 lh-1">
+                    <strong>University</strong><br>
+                    <small class="text-orange">Event Management</small>
+                </span>
+            </a>
+
+            <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#mainNav"
+                aria-controls="mainNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNav">
+
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="events.html" aria-current="page">Events</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html#contact">Contact</a>
+                    </li>
+                </ul>
+
+                <a href="login.html"
+                    class="btn btn-link text-dark text-decoration-none">
+                    Login
+                </a>
+
+                <a href="register.html" class="btn btn-orange">
+                    Register
+                </a>
+
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- PAGE BANNER -->
+    <section class="page-banner">
+        <div class="container">
+            <h1 class="fw-bold">Events</h1>
+            <p class="lead mb-0">
+                Explore all upcoming events at our university.
+            </p>
+        </div>
+    </section>
+
+
+    <!-- SEARCH AND FILTERS -->
+    <section class="container">
+        <form class="filter-bar row g-3 align-items-end"
+            id="filterForm"
+            onsubmit="event.preventDefault();">
+
+            <div class="col-lg-4">
+                <label for="eventSearch" class="form-label small fw-semibold">
+                    Search events
+                </label>
+                <input type="search" class="form-control"
+                    id="eventSearch"
+                    placeholder="Search by event name...">
+            </div>
+
+            <div class="col-sm-6 col-lg-2">
+                <label for="categoryFilter" class="form-label small fw-semibold">
+                    Category
+                </label>
+
+                <select class="form-select" id="categoryFilter">
+                    <option value="">All Categories</option>
+                    <option value="Workshop">Workshop</option>
+                    <option value="Competition">Competition</option>
+                    <option value="Seminar">Seminar</option>
+                    <option value="Ceremony">Ceremony</option>
+                </select>
+            </div>
+
+            <div class="col-sm-6 col-lg-2">
+                <label for="audienceFilter" class="form-label small fw-semibold">
+                    Audience
+                </label>
+
+                <select class="form-select" id="audienceFilter">
+                    <option value="">Everyone</option>
+                    <option value="everyone">Open to everyone</option>
+                    <option value="students">Students only</option>
+                </select>
+            </div>
+
+            <div class="col-sm-6 col-lg-2">
+                <label for="dateFilter" class="form-label small fw-semibold">
+                    Date
+                </label>
+                <input type="text"
+                    class="form-control"
+                    id="dateFilter"
+                    placeholder="dd/mm/yyyy"
+                    autocomplete="off">
+            </div>
+
+            <div class="col-sm-6 col-lg-2">
+                <button type="button" class="btn btn-orange w-100"
+                    id="searchBtn">
+                    <i class="bi bi-search"></i> Search
+                </button>
+            </div>
+
+        </form>
+    </section>
+
+
+    <!-- EVENTS GRID -->
+    <section class="container py-5" id="events-list">
+
+        <div class="d-flex justify-content-between align-items-end flex-wrap gap-2 mb-4">
+
+            <div>
+                <h2 class="fw-bold mb-1">Upcoming Events</h2>
+                <p class="text-muted mb-0">
+                    Find your next opportunity to learn, connect, and grow.
+                </p>
+            </div>
+
+            <span class="badge badge-orange fs-6" id="eventCount" aria-live="polite">
+                6 events available
+            </span>
+
+        </div>
+
+
+        <div class="row g-4" id="eventsGrid">
+
+            <!-- EVENT 1 -->
+            <div class="col-sm-6 col-lg-4 event-item"
+                data-title="AI Workshop"
+                data-category="Workshop"
+                data-audience="students"
+                data-date="2026-11-15">
+                <div class="card event-card h-100">
+
+                    <img src="images/ai-workshop.jpg"
+                        class="card-img-top"
+                        alt="AI Workshop"
+                        loading="lazy">
+
+                    <div class="card-body d-flex flex-column">
+
+                        <span class="badge badge-orange mb-2 align-self-start">
+                            Workshop
+                        </span>
+
+                        <h5 class="card-title">AI Workshop</h5>
+
+                        <p class="card-text small">
+                            Learn the basics of AI with hands-on practice.
+                        </p>
+
+                        <p class="card-text small text-muted mb-1">
+                            <i class="bi bi-calendar-event"></i>
+                            <time datetime="2026-11-15T10:00">15 Nov 2026 - 10:00 AM</time>
+                        </p>
+
+                        <p class="card-text small text-muted mb-1">
+                            <i class="bi bi-geo-alt"></i>
+                            Main Hall
+                        </p>
+
+                        <p class="card-text small text-muted">
+                            <i class="bi bi-people"></i>
+                            50 seats
+                        </p>
+
+                        <a href="event-details.html?id=1"
+                            class="btn btn-orange w-100 mt-auto">
+                            View Details
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- EVENT 2 -->
+            <div class="col-sm-6 col-lg-4 event-item"
+                data-title="Robotics Competition"
+                data-category="Competition"
+                data-audience="students"
+                data-date="2026-11-18">
+                <div class="card event-card h-100">
+
+                    <img src="images/robotics.jpg"
+                        class="card-img-top"
+                        alt="Robotics Competition"
+                        loading="lazy">
+
+                    <div class="card-body d-flex flex-column">
+
+                        <span class="badge badge-orange mb-2 align-self-start">
+                            Competition
+                        </span>
+
+                        <h5 class="card-title">Robotics Competition</h5>
+
+                        <p class="card-text small">
+                            Teams build and program robots to complete challenges.
+                        </p>
+
+                        <p class="card-text small text-muted mb-1">
+                            <i class="bi bi-calendar-event"></i>
+                            <time datetime="2026-11-18T09:00">18 Nov 2026 - 09:00 AM</time>
+                        </p>
+
+                        <p class="card-text small text-muted mb-1">
+                            <i class="bi bi-geo-alt"></i>
+                            Engineering Hall
+                        </p>
+
+                        <p class="card-text small text-muted">
+                            <i class="bi bi-people"></i>
+                            120 seats
+                        </p>
+
+                        <a href="event-details.html?id=2"
+                            class="btn btn-orange w-100 mt-auto">
+                            View Details
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- EVENT 3 -->
+            <div class="col-sm-6 col-lg-4 event-item"
+                data-title="Career Fair"
+                data-category="Seminar"
+                data-audience="everyone"
+                data-date="2026-11-22">
+                <div class="card event-card h-100">
+
+                    <img src="images/career-fair.jpg"
+                        class="card-img-top"
+                        alt="Career Fair"
+                        loading="lazy">
+
+                    <div class="card-body d-flex flex-column">
+
+                        <span class="badge badge-orange mb-2 align-self-start">
+                            Seminar
+                        </span>
+
+                        <h5 class="card-title">Career Fair</h5>
+
+                        <p class="card-text small">
+                            Meet companies, find internships, and get CV tips.
+                        </p>
+
+                        <p class="card-text small text-muted mb-1">
+                            <i class="bi bi-calendar-event"></i>
+                            <time datetime="2026-11-22T10:00">22 Nov 2026 - 10:00 AM</time>
+                        </p>
+
+                        <p class="card-text small text-muted mb-1">
+                            <i class="bi bi-geo-alt"></i>
+                            Conference Hall
+                        </p>
+
+                        <p class="card-text small text-muted">
+                            <i class="bi bi-people"></i>
+                            150 seats
+                        </p>
+
+                        <a href="event-details.html?id=3"
+                            class="btn btn-orange w-100 mt-auto">
+                            View Details
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- EVENT 4 -->
+            <div class="col-sm-6 col-lg-4 event-item"
+                data-title="Tech Talk"
+                data-category="Seminar"
+                data-audience="everyone"
+                data-date="2026-11-28">
+                <div class="card event-card h-100">
+
+                    <img src="images/tech-talk.jpg"
+                        class="card-img-top"
+                        alt="Tech Talk"
+                        loading="lazy">
+
+                    <div class="card-body d-flex flex-column">
+
+                        <span class="badge badge-orange mb-2 align-self-start">
+                            Seminar
+                        </span>
+
+                        <h5 class="card-title">Tech Talk</h5>
+
+                        <p class="card-text small">
+                            A talk about the latest trends in technology.
+                        </p>
+
+                        <p class="card-text small text-muted mb-1">
+                            <i class="bi bi-calendar-event"></i>
+                            <time datetime="2026-11-28T11:00">28 Nov 2026 - 11:00 AM</time>
+                        </p>
+
+                        <p class="card-text small text-muted mb-1">
+                            <i class="bi bi-geo-alt"></i>
+                            Lecture Hall
+                        </p>
+
+                        <p class="card-text small text-muted">
+                            <i class="bi bi-people"></i>
+                            100 seats
+                        </p>
+
+                        <a href="event-details.html?id=4"
+                            class="btn btn-orange w-100 mt-auto">
+                            View Details
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- EVENT 5 -->
+            <div class="col-sm-6 col-lg-4 event-item"
+                data-title="Art Exhibition"
+                data-category="Workshop"
+                data-audience="everyone"
+                data-date="2026-12-01">
+                <div class="card event-card h-100">
+
+                    <img src="images/art-exhibition.jpg"
+                        class="card-img-top"
+                        alt="Art Exhibition"
+                        loading="lazy">
+
+                    <div class="card-body d-flex flex-column">
+
+                        <span class="badge badge-orange mb-2 align-self-start">
+                            Workshop
+                        </span>
+
+                        <h5 class="card-title">Art Exhibition</h5>
+
+                        <p class="card-text small">
+                            Student artworks with a live painting workshop.
+                        </p>
+
+                        <p class="card-text small text-muted mb-1">
+                            <i class="bi bi-calendar-event"></i>
+                            <time datetime="2026-12-01T12:00">01 Dec 2026 - 12:00 PM</time>
+                        </p>
+
+                        <p class="card-text small text-muted mb-1">
+                            <i class="bi bi-geo-alt"></i>
+                            Gallery Hall
+                        </p>
+
+                        <p class="card-text small text-muted">
+                            <i class="bi bi-people"></i>
+                            80 seats
+                        </p>
+
+                        <a href="event-details.html?id=5"
+                            class="btn btn-orange w-100 mt-auto">
+                            View Details
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- EVENT 6 -->
+            <div class="col-sm-6 col-lg-4 event-item"
+                data-title="Graduation Ceremony"
+                data-category="Ceremony"
+                data-audience="everyone"
+                data-date="2026-12-20">
+                <div class="card event-card h-100">
+
+                    <img src="images/graduation.jpg"
+                        class="card-img-top"
+                        alt="Graduation Ceremony"
+                        loading="lazy">
+
+                    <div class="card-body d-flex flex-column">
+
+                        <span class="badge badge-orange mb-2 align-self-start">
+                            Ceremony
+                        </span>
+
+                        <h5 class="card-title">Graduation Ceremony</h5>
+
+                        <p class="card-text small">
+                            Celebrate the achievements of the class of 2026.
+                        </p>
+
+                        <p class="card-text small text-muted mb-1">
+                            <i class="bi bi-calendar-event"></i>
+                            <time datetime="2026-12-20T16:00">20 Dec 2026 - 04:00 PM</time>
+                        </p>
+
+                        <p class="card-text small text-muted mb-1">
+                            <i class="bi bi-geo-alt"></i>
+                            Open Theater
+                        </p>
+
+                        <p class="card-text small text-muted">
+                            <i class="bi bi-people"></i>
+                            500 seats
+                        </p>
+
+                        <a href="event-details.html?id=6"
+                            class="btn btn-orange w-100 mt-auto">
+                            View Details
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Shown by events.js when no event matches the filters -->
+        <p class="text-center text-muted py-5 d-none" id="noResults">
+            No events match your search.
+        </p>
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+
+            <div class="row g-4">
+
+                <div class="col-md-5">
+                    <h5 class="fw-bold">
+                        <i class="bi bi-mortarboard-fill"></i>
+                        University Event Management
+                    </h5>
+
+                    <p class="small">
+                        Together for a better university community.
+                    </p>
+
+                    <div class="social">
+                        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" aria-label="X (Twitter)"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+
+
+                <div class="col-md-3">
+                    <h6 class="fw-bold">Quick Links</h6>
+
+                    <ul class="list-unstyled small">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="about.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+
+                <div class="col-md-4">
+                    <h6 class="fw-bold">Contact Us</h6>
+
+                    <ul class="list-unstyled small">
+                        <li>
+                            <i class="bi bi-envelope"></i>
+                            info@university.edu
+                        </li>
+
+                        <li>
+                            <i class="bi bi-telephone"></i>
+                            +218 91 234 5678
+                        </li>
+
+                        <li>
+                            <i class="bi bi-geo-alt"></i>
+                            Benghazi, Libya
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <hr>
+
+            <p class="text-center small mb-0">
+                &copy; 2026 University Event Management. All rights reserved.
+            </p>
+
+        </div>
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.js"></script>
+    <script>
+        // The real input keeps the value as yyyy-mm-dd (same as type="date"),
+        // so events.js can read #dateFilter.value as before.
+        // The visible input shows dd/mm/yyyy in English, whatever the browser language is.
+        flatpickr("#dateFilter", {
+            dateFormat: "Y-m-d",
+            altInput: true,
+            altFormat: "d/m/Y",
+            altInputClass: "form-control",
+            allowInput: false,
+            disableMobile: true
+        });
+    </script>
+
+    <script src="js/halls.js"></script>
+    <script src="js/events.js"></script>
+
+</body>
+</html>
