@@ -80,3 +80,38 @@ body {
   background-color: rgba(255, 255, 255, 0.2);
   margin-right: 6px;
 }
+.hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+              url("../images/hero.jpg") center / cover,
+              var(--dark);
+  color: #fff;
+  padding: 100px 0 120px;
+  text-align: center;
+}
+
+.hero-search {
+  max-width: 500px;
+  margin: 25px auto 0;
+}
+/* ================= CATEGORIES ================= */
+.categories {
+  margin-top: -50px;
+}
+
+.category-box {
+  background-color: var(--cream);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.category-box i {
+  font-size: 2rem;
+  color: var(--orange);
+}
+
+.category-box p {
+  margin: 8px 0 0;
+  font-weight: 600;
+}
