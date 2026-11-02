@@ -265,6 +265,24 @@ input[type="date"] {
   background-color: var(--orange);
   color: #fff;
 }
+/* ================= EVENT CARDS ================= */
+.event-card {
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s;
+}
+
+.event-card:hover {
+  transform: translateY(-5px);
+}
+
+.event-card img {
+  height: 180px;
+  object-fit: cover;
+  background-color: var(--orange-light);
+}
 
 /* ================= RESPONSIVE ================= */
 @media (max-width: 767px) {
