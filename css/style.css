@@ -440,3 +440,41 @@ input[type="date"] {
     height: 250px;
   }
 }
+
+/* Events Cards - Image Design */
+
+.event-card {
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.event-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.14);
+}
+
+.event-card .card-img-top {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.event-card:hover .card-img-top {
+    transform: scale(1.06);
+}
+
+.event-card .card-body {
+    padding: 22px;
+}
+
+.event-card .card-title {
+    font-weight: 700;
+    color: #23372b;
+}
