@@ -13,9 +13,6 @@
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 
-    <!-- Flatpickr (date and time pickers that always display in English) -->
-    <link href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.css" rel="stylesheet">
-
     <!-- Custom CSS -->
     <link href="css/style.css" rel="stylesheet">
 </head>
@@ -144,6 +141,11 @@
 
 
                     <!-- MY EVENTS -->
+                    <!-- Message shown after clicking Delete (CSS :target, no JavaScript) -->
+                    <div id="event-deleted" class="alert alert-danger action-alert">
+                        <i class="bi bi-trash me-1"></i> The event was deleted.
+                    </div>
+
                     <section id="my-events" class="card admin-card mb-4">
                         <div class="card-header">My Events</div>
                         <div class="card-body p-0">
@@ -156,6 +158,7 @@
                                             <th>Hall</th>
                                             <th>Status</th>
                                             <th>Participants</th>
+                                            <th class="text-end">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -165,6 +168,10 @@
                                             <td>Engineering Hall</td>
                                             <td><span class="badge bg-success">Approved</span></td>
                                             <td>40</td>
+                                            <td class="text-end text-nowrap">
+                                                <a href="#create-event" class="btn btn-sm btn-outline-orange"><i class="bi bi-pencil"></i> Edit</a>
+                                                <a href="#event-deleted" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i> Delete</a>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>AI Workshop</td>
@@ -172,6 +179,10 @@
                                             <td>Conference Room</td>
                                             <td><span class="badge bg-warning text-dark">Pending</span></td>
                                             <td>&mdash;</td>
+                                            <td class="text-end text-nowrap">
+                                                <a href="#create-event" class="btn btn-sm btn-outline-orange"><i class="bi bi-pencil"></i> Edit</a>
+                                                <a href="#event-deleted" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i> Delete</a>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>Technology Seminar</td>
@@ -179,6 +190,10 @@
                                             <td>Garden</td>
                                             <td><span class="badge bg-danger">Rejected</span></td>
                                             <td>&mdash;</td>
+                                            <td class="text-end text-nowrap">
+                                                <a href="#create-event" class="btn btn-sm btn-outline-orange"><i class="bi bi-pencil"></i> Edit</a>
+                                                <a href="#event-deleted" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i> Delete</a>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -192,12 +207,13 @@
                         <div class="card-header">Submit a New Event</div>
                         <div class="card-body p-4">
 
-                            <div class="alert alert-success d-none" id="submitAlert" role="alert">
+                            <!-- Shown after submitting (the form goes to #event-submitted, CSS :target shows it) -->
+                            <div id="event-submitted" class="alert alert-success action-alert" role="alert">
                                 <i class="bi bi-check-circle me-1"></i>
-                                Your event was submitted for approval.
+                                Your event was submitted. It will appear as <strong>Pending</strong> until the admin approves it.
                             </div>
 
-                            <form id="eventForm" action="#" method="post">
+                            <form id="eventForm" action="organizer.html#event-submitted" method="get">
                                 <div class="row g-3">
 
                                     <div class="col-md-6">
@@ -219,14 +235,12 @@
 
                                     <div class="col-md-6">
                                         <label for="eventDate" class="form-label">Date</label>
-                                        <input id="eventDate" name="eventDate" class="form-control" type="text"
-                                            placeholder="dd/mm/yyyy" autocomplete="off" required>
+                                        <input id="eventDate" name="eventDate" class="form-control" type="date" required>
                                     </div>
 
                                     <div class="col-md-6">
                                         <label for="eventTime" class="form-label">Time</label>
-                                        <input id="eventTime" name="eventTime" class="form-control" type="text"
-                                            placeholder="hh:mm AM/PM" autocomplete="off" required>
+                                        <input id="eventTime" name="eventTime" class="form-control" type="time" required>
                                     </div>
 
                                     <div class="col-md-6">
@@ -271,7 +285,7 @@
                             </form>
 
                             <p class="small text-muted mt-3 mb-0">
-                                Note: This is a front-end demo form. Submitting and saving events requires backend functionality.
+                                Note: This is a front-end demo form. Saving events for real requires a backend.
                             </p>
                         </div>
                     </section>
@@ -353,46 +367,6 @@
       <p class="text-center mb-0 small">&copy; 2026 University Event Management. All rights reserved.</p>
     </div>
   </footer>
-
-</body>
-</html>
-
-
-    <!-- JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.js"></script>
-
-    <script>
-        // Date and time pickers: English display, same look on every browser language.
-        const datePicker = flatpickr("#eventDate", {
-            dateFormat: "Y-m-d",
-            altInput: true,
-            altFormat: "d/m/Y",
-            altInputClass: "form-control",
-            minDate: "today",
-            disableMobile: true
-        });
-
-        const timePicker = flatpickr("#eventTime", {
-            enableTime: true,
-            noCalendar: true,
-            dateFormat: "H:i",
-            altInput: true,
-            altFormat: "h:i K",
-            altInputClass: "form-control",
-            disableMobile: true
-        });
-
-        // Demo submit: no backend yet, so show a confirmation and clear the form.
-        document.getElementById("eventForm").addEventListener("submit", function (e) {
-            e.preventDefault();
-            document.getElementById("submitAlert").classList.remove("d-none");
-            this.reset();
-            datePicker.clear();
-            timePicker.clear();
-            document.getElementById("submitAlert").scrollIntoView({ behavior: "smooth", block: "center" });
-        });
-    </script>
 
 </body>
 </html>

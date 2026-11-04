@@ -21,7 +21,6 @@
       <ul class="navbar-nav flex-row flex-wrap ms-auto align-items-center gap-3">
         <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
-        <li class="nav-item"><a class="nav-link" href="organizer.html">Organizer</a></li>
         <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
         <li class="nav-item"><a class="nav-link active" href="admin.html">Dashboard</a></li>
         <li class="nav-item"><a class="btn btn-orange px-4" href="login.html">Logout</a></li>
@@ -39,11 +38,10 @@
           <p class="text-muted small text-uppercase fw-semibold px-3 mb-2">Menu</p>
           <nav class="nav flex-column">
             <a class="nav-link active" href="#overview"><i class="bi bi-speedometer2"></i>Overview</a>
-            <a class="nav-link" href="#events"><i class="bi bi-calendar-event"></i>Events</a>
+            <a class="nav-link" href="#events"><i class="bi bi-calendar-check"></i>Event Approvals</a>
             <a class="nav-link" href="#users"><i class="bi bi-people"></i>Users</a>
             <a class="nav-link" href="#messages"><i class="bi bi-envelope"></i>Messages</a>
             <a class="nav-link" href="#settings"><i class="bi bi-gear"></i>Settings</a>
-            <a class="nav-link" href="organizer.html"><i class="bi bi-person-badge"></i>Organizer Page</a>
             <a class="nav-link" href="login.html"><i class="bi bi-box-arrow-right"></i>Logout</a>
           </nav>
         </aside>
@@ -89,59 +87,68 @@
             </div>
           </section>
 
-          <!-- ===== EVENTS ===== -->
+          <!-- ===== EVENT APPROVALS =====
+               Organizers create events. The admin only approves or rejects them. -->
           <section id="events" class="mb-5">
-            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
-              <h3 class="fw-bold mb-0">Manage Events</h3>
-              <a href="#" class="btn btn-orange"><i class="bi bi-plus-lg"></i> Add Event</a>
+            <div class="mb-3">
+              <h3 class="fw-bold mb-1">Event Approvals</h3>
+              <p class="text-muted mb-0">Events submitted by organizers. Approve them to publish them for students.</p>
             </div>
+
+            <!-- Messages shown after clicking Approve / Reject (CSS :target, no JavaScript) -->
+            <div id="event-approved" class="alert alert-success action-alert">
+              <i class="bi bi-check-circle me-1"></i> The event was approved and is now visible to students.
+            </div>
+            <div id="event-rejected" class="alert alert-danger action-alert">
+              <i class="bi bi-x-circle me-1"></i> The event was rejected. The organizer will be notified.
+            </div>
+
             <div class="card admin-card">
               <div class="card-body p-0">
                 <div class="table-responsive">
                   <table class="table table-hover align-middle mb-0">
                     <thead>
-                      <tr><th>#</th><th>Event</th><th>Organizer</th><th>Date</th><th>Location</th><th>Status</th><th class="text-end">Action</th></tr>
+                      <tr><th>#</th><th>Event</th><th>Organizer</th><th>Date</th><th>Hall</th><th>Status</th><th class="text-end">Decision</th></tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td>1</td><td>Tech Career Fair</td><td>IT Faculty</td><td>15 Nov 2026</td><td>Main Hall</td>
-                        <td><span class="badge bg-success">Approved</span></td>
-                        <td class="text-end">
-                          <a href="#" class="btn btn-sm btn-outline-orange"><i class="bi bi-pencil"></i></a>
-                          <a href="#" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>2</td><td>Annual Sports Day</td><td>Student Union</td><td>22 Nov 2026</td><td>Sports Field</td>
-                        <td><span class="badge bg-success">Approved</span></td>
-                        <td class="text-end">
-                          <a href="#" class="btn btn-sm btn-outline-orange"><i class="bi bi-pencil"></i></a>
-                          <a href="#" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>3</td><td>AI Workshop</td><td>Computer Science Club</td><td>29 Nov 2026</td><td>Lab 3</td>
+                        <td>1</td><td>AI Workshop</td><td>Sara Omar</td><td>22 Nov 2026</td><td>Conference Room</td>
                         <td><span class="badge bg-warning text-dark">Pending</span></td>
-                        <td class="text-end">
-                          <a href="#" class="btn btn-sm btn-outline-orange"><i class="bi bi-pencil"></i></a>
-                          <a href="#" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></a>
+                        <td class="text-end text-nowrap">
+                          <a href="#event-approved" class="btn btn-sm btn-success"><i class="bi bi-check-lg"></i> Approve</a>
+                          <a href="#event-rejected" class="btn btn-sm btn-outline-danger"><i class="bi bi-x-lg"></i> Reject</a>
                         </td>
                       </tr>
                       <tr>
-                        <td>4</td><td>Cultural Night</td><td>Arts Faculty</td><td>5 Dec 2026</td><td>Auditorium</td>
+                        <td>2</td><td>Cultural Night</td><td>Fatima Hassan</td><td>5 Dec 2026</td><td>Arts Room</td>
                         <td><span class="badge bg-warning text-dark">Pending</span></td>
-                        <td class="text-end">
-                          <a href="#" class="btn btn-sm btn-outline-orange"><i class="bi bi-pencil"></i></a>
-                          <a href="#" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></a>
+                        <td class="text-end text-nowrap">
+                          <a href="#event-approved" class="btn btn-sm btn-success"><i class="bi bi-check-lg"></i> Approve</a>
+                          <a href="#event-rejected" class="btn btn-sm btn-outline-danger"><i class="bi bi-x-lg"></i> Reject</a>
                         </td>
                       </tr>
                       <tr>
-                        <td>5</td><td>Graduation Ceremony</td><td>University Office</td><td>20 Dec 2026</td><td>Main Hall</td>
-                        <td><span class="badge bg-secondary">Draft</span></td>
-                        <td class="text-end">
-                          <a href="#" class="btn btn-sm btn-outline-orange"><i class="bi bi-pencil"></i></a>
-                          <a href="#" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></a>
+                        <td>3</td><td>Graduation Ceremony</td><td>Fatima Hassan</td><td>20 Dec 2026</td><td>Main Hall</td>
+                        <td><span class="badge bg-warning text-dark">Pending</span></td>
+                        <td class="text-end text-nowrap">
+                          <a href="#event-approved" class="btn btn-sm btn-success"><i class="bi bi-check-lg"></i> Approve</a>
+                          <a href="#event-rejected" class="btn btn-sm btn-outline-danger"><i class="bi bi-x-lg"></i> Reject</a>
                         </td>
+                      </tr>
+                      <tr>
+                        <td>4</td><td>Robotics Competition</td><td>Sara Omar</td><td>18 Nov 2026</td><td>Engineering Hall</td>
+                        <td><span class="badge bg-success">Approved</span></td>
+                        <td class="text-end text-muted small">Published</td>
+                      </tr>
+                      <tr>
+                        <td>5</td><td>Tech Career Fair</td><td>Fatima Hassan</td><td>15 Nov 2026</td><td>Main Hall</td>
+                        <td><span class="badge bg-success">Approved</span></td>
+                        <td class="text-end text-muted small">Published</td>
+                      </tr>
+                      <tr>
+                        <td>6</td><td>Technology Seminar</td><td>Sara Omar</td><td>01 Dec 2026</td><td>Garden</td>
+                        <td><span class="badge bg-danger">Rejected</span></td>
+                        <td class="text-end text-muted small">Returned to organizer</td>
                       </tr>
                     </tbody>
                   </table>
@@ -252,7 +259,6 @@
           <ul class="list-unstyled">
             <li><a href="index.html">Home</a></li>
             <li><a href="events.html">Events</a></li>
-            <li><a href="organizer.html">Organizer</a></li>
             <li><a href="about.html">About</a></li>
           </ul>
         </div>

@@ -216,15 +216,29 @@ input[type="date"] {
   display: none;
 }
 
-/* Student tab chosen */
+/* The chosen tab turns orange */
 #tab-student:checked ~ .role-tabs label[for="tab-student"],
+#tab-organizer:checked ~ .role-tabs label[for="tab-organizer"],
 #tab-admin:checked ~ .role-tabs label[for="tab-admin"] {
   background-color: var(--orange);
   color: #fff;
 }
 
+/* Show the form of the chosen tab */
 #tab-student:checked ~ .student-form,
+#tab-organizer:checked ~ .organizer-form,
 #tab-admin:checked ~ .admin-form {
+  display: block;
+}
+
+/* ================= ACTION MESSAGES (CSS only) =================
+   Hidden until a button links to them (e.g. href="#event-approved").
+   :target shows the message whose id is in the address bar. */
+.action-alert {
+  display: none;
+}
+
+.action-alert:target {
   display: block;
 }
 

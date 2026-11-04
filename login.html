@@ -40,14 +40,16 @@
               <p class="text-center text-muted mb-4">Choose your account type and log in</p>
 
               <!--
-                Two tabs made with CSS only (no JavaScript):
+                Three tabs made with CSS only (no JavaScript):
                 the hidden radio buttons decide which form is shown.
               -->
               <input type="radio" name="role-tab" id="tab-student" class="role-radio" checked>
+              <input type="radio" name="role-tab" id="tab-organizer" class="role-radio">
               <input type="radio" name="role-tab" id="tab-admin" class="role-radio">
 
               <div class="role-tabs mb-4">
                 <label for="tab-student" class="role-tab"><i class="bi bi-mortarboard"></i> Student</label>
+                <label for="tab-organizer" class="role-tab"><i class="bi bi-person-badge"></i> Organizer</label>
                 <label for="tab-admin" class="role-tab"><i class="bi bi-shield-lock"></i> Admin</label>
               </div>
 
@@ -77,7 +79,33 @@
                 <button type="submit" class="btn btn-orange w-100 py-2 fw-semibold">Login as Student</button>
               </form>
 
-              <!-- ===== ADMIN LOGIN → admin dashboard (has Organizer access) =====
+              <!-- ===== ORGANIZER LOGIN → organizer dashboard (adds, edits and deletes events) =====
+                   Demo account: organizer@university.edu / organizer123 -->
+              <form class="role-form organizer-form" action="organizer.html" method="get">
+                <div class="mb-3">
+                  <label for="organizer-email" class="form-label">Organizer Email</label>
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                    <input type="email" class="form-control" id="organizer-email" name="email"
+                           placeholder="organizer@university.edu" required
+                           pattern="organizer@university\.edu"
+                           title="No organizer account found with this email.">
+                  </div>
+                </div>
+                <div class="mb-4">
+                  <label for="organizer-password" class="form-label">Password</label>
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                    <input type="password" class="form-control" id="organizer-password" name="password"
+                           placeholder="Your password" required
+                           pattern="organizer123"
+                           title="Incorrect password.">
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-orange w-100 py-2 fw-semibold">Login as Organizer</button>
+              </form>
+
+              <!-- ===== ADMIN LOGIN → admin dashboard (approves or rejects events) =====
                    Demo account: admin@university.edu / admin123 -->
               <form class="role-form admin-form" action="admin.html" method="get">
                 <div class="mb-3">
