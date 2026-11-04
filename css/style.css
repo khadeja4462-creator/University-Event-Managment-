@@ -478,3 +478,131 @@ input[type="date"] {
     font-weight: 700;
     color: #23372b;
 }
+/* ===== LIMU LOGO ===== */
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+.brand-icon {
+    width: 48px;
+    height: 48px;
+    background-color: #fff1e5;
+    color: #ff851b;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 27px;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.brand-limu {
+    color: #102d50;
+    font-size: 23px;
+    font-weight: 800;
+}
+
+.brand-name {
+    color: #ff851b;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* ===== EVENTS PAGE BANNER ===== */
+
+.page-banner {
+    background-image:
+        linear-gradient(
+            to right,
+            rgba(8, 35, 66, 0.75),
+            rgba(8, 35, 66, 0.15)
+        ),
+        url("../images/limu7.webp");
+
+    background-size: cover;
+    background-position: center;
+    min-height: 350px;
+    display: flex;
+    align-items: center;
+    
+}
+
+.banner-overlay {
+    width: 100%;
+    padding: 60px 0;
+}
+
+.page-banner h1 {
+    color: white;
+    font-size: 65px;
+    font-weight: bold;
+}
+
+.page-banner p {
+    color: white;
+    font-size: 20px;
+}
+
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 768px) {
+    .page-banner {
+        min-height: 230px;
+    }
+
+    .banner-content h1 {
+        font-size: 42px;
+    }
+
+    .banner-content p {
+        font-size: 15px;
+    }
+}
+/* ===== FOOTER BRAND ===== */
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.footer-icon {
+    width: 45px;
+    height: 45px;
+    background-color: #fff1e5;
+    color: #ff851b;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.footer-brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.footer-limu {
+    color: rgb(12, 9, 9);
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.footer-name {
+    color: #f0ba8b;
+    font-size: 14px;
+    font-weight: 600;
+}
